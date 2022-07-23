@@ -36,7 +36,7 @@ func berlinClockSecond(second: Int ) -> String {
 //
 //}
 
-func validateAndGetResult(hours: Int) -> String {
+func berlinClockHour(hours: Int) -> String {
     guard hours <= 24 else { return "Invalid format of hours" }
     
     let divider = hours / 5
@@ -65,5 +65,6 @@ func validateAndGetResult(minutes: Int) -> String {
 }
 
 
-print(validateAndGetResult(hours: 20))
+print(berlinClockHour(hours: 20))
 print(validateAndGetResult(minutes: 55))
+print(berlinClockSecond(second: 33))
