@@ -54,19 +54,30 @@ func validateAndGetResult(minutes: Int) -> String {
     let divider = minutes / 5
     let mod = minutes % 5
     
-    let yellowResultOfFive = [String](repeating: "Y", count: divider)
-    var realResultOfFive: [String] = yellowResultOfFive.enumerated().compactMap { (index, result) in
-        let redPartIndexes = [3, 6, 9]
-        return redPartIndexes.contains(index + 1) ? "R" : result
+//    let yellowResultOfFive = [String](repeating: "Y", count: divider)
+//    var realResultOfFive: [String] = yellowResultOfFive.enumerated().compactMap { (index, result) in
+//        let redPartIndexes = [3, 6, 9]
+//        return redPartIndexes.contains(index + 1) ? "R" : result
+//    }
+    var realResultOfFive: String = ""
+    let intStream = 1...11
+    intStream.forEach { i in
+        realResultOfFive.append( i <= divider ? minuteRow(index: i) : "O")
+    }
+    realResultOfFive.append(" ")
+    
+    realResultOfFive.append(lampRow(totalNumberLamps: 4, numberLampsOn: mod, lampSymbol: "Y"))
+    
+    return realResultOfFive
     }
     
-    realResultOfFive.append(" ")
-    realResultOfFive.append(lampRow(totalNumberLamps: 4, numberLampsOn: mod, lampSymbol: "Y"))
-    let resultOfOne = [String](repeating: "Y", count: mod)
-    let result = realResultOfFive + resultOfOne
-    
-    return result.joined()
-}
+//    realResultOfFive.append(" ")
+//    realResultOfFive.append(lampRow(totalNumberLamps: 4, numberLampsOn: mod, lampSymbol: "Y"))
+//    let resultOfOne = [String](repeating: "Y", count: mod)
+//    let result = realResultOfFive + resultOfOne
+//
+//    return result.joined()
+
 
 
 func lampRow(totalNumberLamps: Int , numberLampsOn: Int , lampSymbol: String ) -> String {
